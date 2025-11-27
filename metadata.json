@@ -1,0 +1,5 @@
+{
+  "name": "Taiwan Lunch Decider",
+  "description": "A fun, animated random lunch picker for Taiwanese food options, featuring a slot-machine effect and AI-powered food descriptions.",
+  "requestFramePermissions": []
+}
