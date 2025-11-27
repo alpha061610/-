@@ -1,6 +1,6 @@
 # 台中西區午餐決策小幫手
 
-這是一個基於 React + Vite + Tailwind CSS 開發的網頁應用程式，結合 Google Gemini AI 來幫你篩選午餐餐廳並提供摘要。
+這是一個基於 React + Vite + Tailwind CSS 開發的網頁應用程式，結合 Google Gemini AI 來幫你篩選午餐餐廳並提供美食摘要。
 
 ## 功能特色
 - **智慧篩選**：根據預算、騎車距離、用餐時間篩選餐廳。
