@@ -1,20 +1,43 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# 台中西區午餐決策小幫手
 
-# Run and deploy your AI Studio app
+這是一個基於 React + Vite + Tailwind CSS 開發的網頁應用程式，結合 Google Gemini AI 來幫你篩選午餐餐廳並提供美食摘要。
 
-This contains everything you need to run your app locally.
+## 功能特色
+- **智慧篩選**：根據預算、騎車距離、用餐時間篩選餐廳。
+- **AI 評論摘要**：利用 Gemini AI 模擬分析餐廳的網路評論、環境氛圍與建議。
+- **Google Maps 整合**：快速查看地圖與菜單。
 
-View your app in AI Studio: https://ai.studio/apps/drive/1V2hnQ7LB0jQ0m8nA8MS0gJQ2NNisy6he
+## 如何在本地運行
 
-## Run Locally
+1. **複製專案**
+   ```bash
+   git clone <YOUR_REPO_URL>
+   cd <YOUR_REPO_NAME>
+   ```
 
-**Prerequisites:**  Node.js
+2. **安裝依賴**
+   ```bash
+   npm install
+   ```
 
+3. **設定 API Key**
+   在根目錄建立 `.env` 檔案，並填入你的 Google Gemini API Key：
+   ```env
+   VITE_API_KEY=你的_GOOGLE_API_KEY
+   ```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+4. **啟動開發伺服器**
+   ```bash
+   npm run dev
+   ```
+
+## 如何部署到 GitHub Pages
+
+1. 確保 `vite.config.ts` 中的 `base` 設定正確（通常設為 `./` 或 `/repo-name/`）。
+2. 執行建置：
+   ```bash
+   npm run build
+   ```
+3. 將 `dist` 資料夾的內容推送到 GitHub 的 `gh-pages` 分支，或使用 GitHub Actions 自動部署。
+
+> 注意：由於這是純前端應用，API Key 若直接寫在程式碼中會暴露。建議使用本地環境變數，或限制 API Key 的使用網域。

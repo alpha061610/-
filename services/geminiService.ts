@@ -1,10 +1,21 @@
-
 import { GoogleGenAI, Type } from "@google/genai";
 import { RestaurantAnalysis } from "../types";
 
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Support both Vite env vars (import.meta.env) and standard process.env
+const getApiKey = () => {
+  if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_API_KEY) {
+    return import.meta.env.VITE_API_KEY;
+  }
+  return process.env.API_KEY;
+};
+
+const apiKey = getApiKey();
+
+// Initialize AI only if key exists to prevent immediate crash, though functionality will fail
+const ai = apiKey ? new GoogleGenAI({ apiKey }) : null;
 
 export const getFoodFunFact = async (foodName: string): Promise<string> => {
+  if (!ai) return "請設定 API Key";
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
@@ -18,6 +29,15 @@ export const getFoodFunFact = async (foodName: string): Promise<string> => {
 };
 
 export const getRestaurantAnalysis = async (restaurantName: string, address: string): Promise<RestaurantAnalysis> => {
+  if (!ai) {
+    return {
+      positiveReviews: ["請先設定 API Key 才能使用 AI 分析功能。"],
+      negativeReviews: [],
+      atmosphere: "無法連線",
+      diningAdvice: "無法連線"
+    };
+  }
+  
   try {
     const response = await ai.models.generateContent({
       model: 'gemini-2.5-flash',
